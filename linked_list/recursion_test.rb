@@ -2,7 +2,7 @@ gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative 'node'
-require_relative 'recursive'
+require_relative 'recursion'
 
 class RecursionTest < Minitest::Test
 
