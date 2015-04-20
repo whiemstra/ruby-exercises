@@ -10,7 +10,7 @@ class IterationTest < Minitest::Test
     assert Iteration
   end
 
-  def test_it_has_default_count_of_zero
+  def test_head_not_incl_in_count
     list = Iteration.new
     assert_equal 0, list.count
     refute list.head
@@ -29,6 +29,8 @@ class IterationTest < Minitest::Test
     list.push("hello")
     list.push("world")
     list.push("!")
+    assert_equal "hello", list.head.data
+    assert_equal "!", list.tail
     assert_equal 3, list.count
   end
 
@@ -48,7 +50,7 @@ class IterationTest < Minitest::Test
     assert_equal "!", list.tail
   end
 
-  def test_it_can_pop_the_last_node
+  def test_it_can_pop_tail_node
     list = Iteration.new
     list.push("hello")
     list.push("world")
@@ -57,15 +59,23 @@ class IterationTest < Minitest::Test
     assert_equal 1, list.count
   end
 
+  def test_access_to_specific_node
+    list = Iteration.new
+    list.push("hello")
+    list.push("world")
+    list.push("!")
+    assert_equal "world", list.find(1)
+  end
+
   def test_it_can_shift_the_list_with_a_new_element
     skip
-    list = LinkedList.new
-    list.push("howdy")
+    list = Iteration.new
     list.push("hello")
+    list.push("world")
     assert_equal 2, list.count
-    list.shift("heyo")
+    list.shift("Yo")
     assert_equal 3, list.count
-    assert_equal "heyo", list.head.data
+    assert_equal "Yo", list.head.data
   end
 
   def test_a_node_can_be_inserted_into_any_position
@@ -76,21 +86,4 @@ class IterationTest < Minitest::Test
     skip
   end
 
-  def test_head_is_not_included_in_count
-    skip
-    list = Node.new
-    assert_equal 1, list.count
-  end
-
-  def test_popping_a_node_removes_tail_node
-    skip
-  end
-
-  def test_access_to_tail_node
-    skip
-  end
-
-  def test_access_to_specific_node
-    skip
-  end
 end

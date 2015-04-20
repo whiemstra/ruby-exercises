@@ -38,10 +38,22 @@ class Iteration
 
   def pop
     tail = @head
+    #node_count = 0
     until tail.next == nil
+      previous = tail
+      tail = tail.next
+      #node_count += 1
+    end
+    previous.next = nil
+    return tail.data
+  end
+
+  def find(position)
+    tail = @head
+    position.times do |i|
       tail = tail.next
     end
     return tail.data
   end
-    
+
 end

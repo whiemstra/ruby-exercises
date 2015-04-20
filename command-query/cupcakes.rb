@@ -12,4 +12,9 @@ class Cupcakes
   def <<(cupcake)
     @cupcakes << cupcake
   end
+
+  def flavor
+    @cupcakes.sweetest
+    #find the sweetest, return the cupcake kind
+  end
 end
